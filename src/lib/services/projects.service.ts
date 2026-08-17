@@ -1,5 +1,4 @@
 import { prisma } from '../db';
-import { ProjectCategory } from '@prisma/client';
 
 export async function getProjects() {
   return await prisma.project.findMany({
