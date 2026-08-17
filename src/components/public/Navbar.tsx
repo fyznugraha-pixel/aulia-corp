@@ -2,11 +2,12 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 export function Navbar({ ctaText = "Konsultasi Gratis" }: { ctaText?: string }) {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
@@ -19,7 +20,7 @@ export function Navbar({ ctaText = "Konsultasi Gratis" }: { ctaText?: string }) 
       const target = document.querySelector(hash);
       if (target) {
         target.scrollIntoView({ behavior: 'smooth' });
-        window.history.pushState(null, '', href);
+        router.push(href, { scroll: false });
       }
     }
     closeMenu();
