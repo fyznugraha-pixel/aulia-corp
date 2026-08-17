@@ -19,11 +19,20 @@ export function ProjectManager({ initialProjects }: { initialProjects: Project[]
   const [isCompressing, setIsCompressing] = useState(false);
   const [croppedCoverImage, setCroppedCoverImage] = useState<File | null>(null);
 
+  // Gallery States
+  const [existingGallery, setExistingGallery] = useState<string[]>([]);
+  const [newGalleryFiles, setNewGalleryFiles] = useState<File[]>([]);
+  const [newGalleryPreviews, setNewGalleryPreviews] = useState<string[]>([]);
+
   useEffect(() => {
     if (state?.success) {
       setIsSlideOverOpen(false);
       setEditingProject(null);
       setCroppedCoverImage(null);
+      setExistingGallery([]);
+      setNewGalleryFiles([]);
+      newGalleryPreviews.forEach(URL.revokeObjectURL);
+      setNewGalleryPreviews([]);
     }
     // Always reset loading state when action completes (success or error)
     if (state) {
@@ -39,8 +48,16 @@ export function ProjectManager({ initialProjects }: { initialProjects: Project[]
       formData.set('coverImageFile', croppedCoverImage);
     }
     
+    // Add existing gallery URLs
+    formData.set('existingGallery', JSON.stringify(existingGallery));
+    
+    // Add new gallery files
+    newGalleryFiles.forEach((file) => {
+      formData.append('galleryFiles', file);
+    });
+    
     const file = formData.get('coverImageFile') as File;
-    if (file && file.size > 0) {
+    if ((file && file.size > 0) || newGalleryFiles.length > 0) {
       setIsCompressing(true);
     }
     
@@ -52,12 +69,20 @@ export function ProjectManager({ initialProjects }: { initialProjects: Project[]
   const handleEdit = (p: Project) => {
     setEditingProject(p);
     setCroppedCoverImage(null);
+    setExistingGallery(p.gallery || []);
+    setNewGalleryFiles([]);
+    newGalleryPreviews.forEach(URL.revokeObjectURL);
+    setNewGalleryPreviews([]);
     setIsSlideOverOpen(true);
   };
 
   const handleAddNew = () => {
     setEditingProject(null);
     setCroppedCoverImage(null);
+    setExistingGallery([]);
+    setNewGalleryFiles([]);
+    newGalleryPreviews.forEach(URL.revokeObjectURL);
+    setNewGalleryPreviews([]);
     setIsSlideOverOpen(true);
   };
 
@@ -236,6 +261,61 @@ export function ProjectManager({ initialProjects }: { initialProjects: Project[]
                 onCropComplete={setCroppedCoverImage}
                 removable={!editingProject}
               />
+            </div>
+
+            <div className="pt-4 border-t border-slate-200">
+              <label className="block text-sm font-semibold text-slate-700 mb-2">Galeri Proyek (Opsional)</label>
+              <p className="text-xs text-slate-500 mb-4">Tambahkan foto-foto lain terkait acara/proyek ini. Akan ditampilkan di halaman detail proyek.</p>
+              
+              <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 mb-4">
+                {existingGallery.map((url, i) => (
+                  <div key={`exist-${i}`} className="relative aspect-square rounded-lg border border-slate-200 overflow-hidden group bg-slate-100">
+                    <Image src={url} alt={`Gallery ${i}`} fill className="object-cover" />
+                    <button 
+                      type="button"
+                      onClick={() => setExistingGallery(prev => prev.filter((_, idx) => idx !== i))}
+                      className="absolute top-1 right-1 p-1 bg-red-600 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-sm"
+                    >
+                      <Trash2 className="w-3 h-3" />
+                    </button>
+                  </div>
+                ))}
+                
+                {newGalleryPreviews.map((url, i) => (
+                  <div key={`new-${i}`} className="relative aspect-square rounded-lg border border-blue-200 overflow-hidden group bg-blue-50">
+                    <Image src={url} alt={`New Gallery ${i}`} fill className="object-cover" />
+                    <button 
+                      type="button"
+                      onClick={() => {
+                        URL.revokeObjectURL(url);
+                        setNewGalleryPreviews(prev => prev.filter((_, idx) => idx !== i));
+                        setNewGalleryFiles(prev => prev.filter((_, idx) => idx !== i));
+                      }}
+                      className="absolute top-1 right-1 p-1 bg-red-600 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-sm"
+                    >
+                      <Trash2 className="w-3 h-3" />
+                    </button>
+                    <span className="absolute bottom-1 left-1 bg-blue-600 text-white text-[10px] px-1.5 py-0.5 rounded shadow">Baru</span>
+                  </div>
+                ))}
+                
+                <label className="cursor-pointer border-2 border-dashed border-slate-300 rounded-lg flex flex-col items-center justify-center hover:bg-slate-50 hover:border-blue-400 transition-colors aspect-square">
+                  <input 
+                    type="file" 
+                    multiple 
+                    accept="image/*" 
+                    className="hidden" 
+                    onChange={(e) => {
+                      const files = Array.from(e.target.files || []);
+                      if (files.length === 0) return;
+                      setNewGalleryFiles(prev => [...prev, ...files]);
+                      setNewGalleryPreviews(prev => [...prev, ...files.map(f => URL.createObjectURL(f))]);
+                    }}
+                  />
+                  <Plus className="w-6 h-6 text-slate-400 mb-1" />
+                  <span className="text-[10px] font-medium text-slate-500">Tambah</span>
+                </label>
+              </div>
             </div>
 
             <div className="flex items-center justify-between p-3 bg-white border border-slate-200 rounded-lg">

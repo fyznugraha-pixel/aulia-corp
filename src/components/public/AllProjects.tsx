@@ -4,6 +4,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import type { Project } from '@prisma/client';
 
 export function AllProjects({ projects }: { projects: Project[] }) {
@@ -54,34 +55,35 @@ export function AllProjects({ projects }: { projects: Project[] }) {
           }}
         >
           {filteredProjects.map(project => (
-            <motion.div 
-              key={project.id} 
-              className="flex flex-col gap-6 group cursor-pointer"
-              variants={{
-                hidden: { opacity: 0, y: 30 },
-                visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-              }}
-            >
-              <div className="aspect-[4/3] w-full rounded overflow-hidden relative bg-surface-container-low">
-                {project.coverImage && project.coverImage !== '[PLACEHOLDER]' ? (
-                  <Image
-                    src={project.coverImage}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                ) : (
-                  <div className="w-full h-full bg-surface-container-lowest/10 border border-surface-container-lowest/40 transition-transform duration-700 group-hover:scale-105 flex items-center justify-center">
-                    <span className="text-on-surface-variant opacity-30 font-label-md tracking-widest uppercase">Placeholder</span>
-                  </div>
-                )}
-              </div>
-              <div className="flex flex-col gap-2">
-                <span className="font-label-md text-label-md text-on-background/70">{project.year} • {project.city}</span>
-                <h3 className="font-display-lg text-headline-sm font-black tracking-tighter text-on-background uppercase">{project.title}</h3>
-                <p className="font-body-md text-body-md text-on-surface-variant line-clamp-3">{project.shortDesc}</p>
-              </div>
-            </motion.div>
+            <Link href={`/projects/${project.id}`} passHref key={project.id}>
+              <motion.div 
+                className="flex flex-col gap-6 group cursor-pointer"
+                variants={{
+                  hidden: { opacity: 0, y: 30 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+                }}
+              >
+                <div className="aspect-[4/3] w-full rounded overflow-hidden relative bg-surface-container-low">
+                  {project.coverImage && project.coverImage !== '[PLACEHOLDER]' ? (
+                    <Image
+                      src={project.coverImage}
+                      alt={project.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-surface-container-lowest/10 border border-surface-container-lowest/40 transition-transform duration-700 group-hover:scale-105 flex items-center justify-center">
+                      <span className="text-on-surface-variant opacity-30 font-label-md tracking-widest uppercase">Placeholder</span>
+                    </div>
+                  )}
+                </div>
+                <div className="flex flex-col gap-2">
+                  <span className="font-label-md text-label-md text-on-background/70">{project.year} • {project.city}</span>
+                  <h3 className="font-display-lg text-headline-sm font-black tracking-tighter text-on-background uppercase">{project.title}</h3>
+                  <p className="font-body-md text-body-md text-on-surface-variant line-clamp-3">{project.shortDesc}</p>
+                </div>
+              </motion.div>
+            </Link>
           ))}
         </motion.div>
         </div>

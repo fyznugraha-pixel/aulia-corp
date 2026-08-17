@@ -20,11 +20,30 @@ export async function saveProjectAction(prevState: any, formData: FormData) {
     isFeatured: formData.get('isFeatured') === 'on',
     order: formData.get('order'),
     coverImage: formData.get('coverImage') || '[PLACEHOLDER]', // fallback
+    gallery: [],
   };
+
+  // 1. Parse existing gallery URLs that the user kept
+  const existingGalleryStr = formData.get('existingGallery') as string;
+  const keptGalleryUrls = existingGalleryStr ? JSON.parse(existingGalleryStr) : [];
+  
+  // 2. Process new gallery files
+  const galleryFiles = formData.getAll('galleryFiles') as File[];
+  const newGalleryUrls: string[] = [];
 
   if (coverImageFile && coverImageFile.size > 0) {
     rawData.coverImage = await uploadImage(coverImageFile);
   }
+
+  // Upload new gallery files in parallel
+  const validGalleryFiles = galleryFiles.filter(file => file.size > 0);
+  if (validGalleryFiles.length > 0) {
+    const uploadPromises = validGalleryFiles.map(file => uploadImage(file));
+    const uploadedUrls = await Promise.all(uploadPromises);
+    newGalleryUrls.push(...uploadedUrls);
+  }
+
+  rawData.gallery = [...keptGalleryUrls, ...newGalleryUrls];
 
   const result = projectSchema.safeParse(rawData);
 
@@ -36,8 +55,18 @@ export async function saveProjectAction(prevState: any, formData: FormData) {
     if (id) {
       // Update
       const existing = await prisma.project.findUnique({ where: { id } });
-      if (existing && existing.coverImage !== result.data.coverImage && existing.coverImage !== '[PLACEHOLDER]') {
-        await deleteImage(existing.coverImage);
+      if (existing) {
+        // Handle cover image deletion
+        if (existing.coverImage !== result.data.coverImage && existing.coverImage !== '[PLACEHOLDER]') {
+          await deleteImage(existing.coverImage);
+        }
+        
+        // Handle gallery images deletion
+        const urlsToDelete = existing.gallery.filter(url => !keptGalleryUrls.includes(url));
+        if (urlsToDelete.length > 0) {
+          const deletePromises = urlsToDelete.map(url => deleteImage(url));
+          await Promise.all(deletePromises);
+        }
       }
       await updateProject(id, result.data);
     } else {
@@ -55,8 +84,14 @@ export async function saveProjectAction(prevState: any, formData: FormData) {
 export async function deleteProjectAction(id: string) {
   try {
     const existing = await prisma.project.findUnique({ where: { id } });
-    if (existing && existing.coverImage !== '[PLACEHOLDER]') {
-      await deleteImage(existing.coverImage);
+    if (existing) {
+      if (existing.coverImage !== '[PLACEHOLDER]') {
+        await deleteImage(existing.coverImage);
+      }
+      if (existing.gallery && existing.gallery.length > 0) {
+        const deletePromises = existing.gallery.map(url => deleteImage(url));
+        await Promise.all(deletePromises);
+      }
     }
     await deleteProject(id);
     revalidatePath('/');

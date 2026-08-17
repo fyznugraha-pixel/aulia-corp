@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import type { Project } from '@prisma/client';
 
 export function SelectedWork({ projects }: { projects: Project[] }) {
@@ -38,7 +39,7 @@ export function SelectedWork({ projects }: { projects: Project[] }) {
           }
 
           return (
-            <div key={project.id} className={`relative overflow-hidden group bg-surface-container-low cursor-pointer rounded ${gridClasses}`}>
+            <Link href={`/projects/${project.id}`} key={project.id} className={`relative overflow-hidden group bg-surface-container-low cursor-pointer rounded block ${gridClasses}`}>
               {project.coverImage && project.coverImage !== '[PLACEHOLDER]' ? (
                 <Image
                   src={project.coverImage}
@@ -61,7 +62,7 @@ export function SelectedWork({ projects }: { projects: Project[] }) {
                   ))}
                 </h3>
               </div>
-            </div>
+            </Link>
           );
         })}
       </motion.div>
