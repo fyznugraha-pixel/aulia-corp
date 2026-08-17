@@ -24,8 +24,11 @@ export function ClientTrust({ clients }: { clients: ClientLogo[] }) {
   const renderClientGroup = (title: string, group: ClientLogo[], reverse: boolean = false) => {
     if (group.length === 0) return null;
     
-    // Duplicate the group to create an infinite loop effect
-    const duplicatedGroup = [...group, ...group, ...group]; 
+    // Duplicate the group to create an infinite loop effect, ensure at least 12 items for wide screens
+    let duplicatedGroup = [...group];
+    while (duplicatedGroup.length < 12) {
+      duplicatedGroup = [...duplicatedGroup, ...group];
+    }
 
     return (
       <div className="flex flex-col gap-8 overflow-hidden w-full relative">
