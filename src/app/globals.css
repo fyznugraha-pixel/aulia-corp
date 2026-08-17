@@ -108,10 +108,10 @@
     text-wrap: balance;
   }
   .animate-marquee {
-    animation: marquee 12s linear infinite;
+    animation: marquee 40s linear infinite;
   }
   .animate-marquee-reverse {
-    animation: marquee 12s linear infinite reverse;
+    animation: marquee 40s linear infinite reverse;
   }
   .pause-on-hover:hover .animate-marquee,
   .pause-on-hover:hover .animate-marquee-reverse {

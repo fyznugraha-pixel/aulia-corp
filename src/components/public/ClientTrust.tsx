@@ -38,7 +38,7 @@ export function ClientTrust({ clients }: { clients: ClientLogo[] }) {
         <div className="absolute top-0 bottom-0 left-0 w-16 md:w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none mt-12"></div>
         <div className="absolute top-0 bottom-0 right-0 w-16 md:w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none mt-12"></div>
 
-        <div className="flex w-full overflow-hidden pause-on-hover">
+        <div className="flex w-full overflow-hidden">
           <div className={`flex w-max min-w-full shrink-0 gap-8 md:gap-16 items-center px-4 md:px-8 ${reverse ? 'animate-marquee-reverse' : 'animate-marquee'}`}>
             {duplicatedGroup.map((client, i) => (
               <div key={`${client.id}-${i}`} className="w-28 md:w-36 h-12 md:h-16 relative rounded-sm flex items-center justify-center overflow-hidden shrink-0 group">
