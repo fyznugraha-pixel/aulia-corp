@@ -15,7 +15,7 @@ export function Team({ members }: { members: TeamMember[] }) {
         
         <div className="flex flex-col gap-4 mb-16 md:mb-24">
           <div className="w-12 h-px bg-tertiary"></div>
-          <h2 className="font-display-xl text-display-xl text-on-background font-black tracking-tighter uppercase">
+          <h2 className="font-display-xl text-headline-lg md:text-display-xl text-on-background font-black tracking-tighter uppercase">
             Meet the Team
           </h2>
           <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">

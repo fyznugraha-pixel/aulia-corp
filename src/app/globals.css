@@ -107,4 +107,19 @@
   .text-balance {
     text-wrap: balance;
   }
+  .animate-marquee {
+    animation: marquee 12s linear infinite;
+  }
+  .animate-marquee-reverse {
+    animation: marquee 12s linear infinite reverse;
+  }
+  .pause-on-hover:hover .animate-marquee,
+  .pause-on-hover:hover .animate-marquee-reverse {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
 }

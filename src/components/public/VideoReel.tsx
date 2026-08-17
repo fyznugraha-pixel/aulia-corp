@@ -19,7 +19,7 @@ export function VideoReel({ videos }: { videos: EventVideo[] }) {
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
         <div className="flex flex-col gap-4 mb-12">
           <div className="w-12 h-px bg-tertiary"></div>
-          <h2 className="font-display-xl text-display-xl text-on-background font-black tracking-tighter uppercase">
+          <h2 className="font-display-xl text-headline-lg md:text-display-xl text-on-background font-black tracking-tighter uppercase">
             Auliacorp Event Teaser
           </h2>
         </div>

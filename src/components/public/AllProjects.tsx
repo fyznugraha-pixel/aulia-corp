@@ -23,32 +23,35 @@ export function AllProjects({ projects }: { projects: Project[] }) {
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
         <div className="flex flex-col gap-12 pt-16 border-t border-on-surface/10">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
-          <h2 className="font-display-xl text-headline-xl text-on-background font-black tracking-tighter uppercase">
+          <h2 className="font-display-xl text-headline-lg md:text-display-xl text-on-background font-black tracking-tighter uppercase">
             All Projects
           </h2>
 
-          <div className="flex flex-wrap gap-6 border-b border-on-surface/10 pb-4 w-full md:w-auto">
+          <div className="flex overflow-x-auto hide-scrollbar gap-6 border-b border-on-surface/10 w-full md:w-auto">
             {categories.map(cat => (
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
-                className={`font-label-md text-label-md pb-2 transition-colors ${
+                className={`font-label-md text-label-md whitespace-nowrap pb-4 relative transition-colors ${
                   filter === cat 
-                    ? 'text-tertiary font-bold border-b-2 border-tertiary' 
+                    ? 'text-tertiary font-bold' 
                     : 'text-on-surface-variant hover:text-tertiary font-medium'
                 }`}
               >
                 {cat}
+                {filter === cat && (
+                  <span className="absolute bottom-0 left-0 w-full h-[2px] bg-tertiary" />
+                )}
               </button>
             ))}
           </div>
         </div>
 
         <motion.div 
+          key={filter}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-gutter gap-y-16"
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          animate="visible"
           variants={{
             hidden: { opacity: 0 },
             visible: { opacity: 1, transition: { staggerChildren: 0.1 } }

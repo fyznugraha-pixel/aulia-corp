@@ -21,35 +21,59 @@ export function ClientTrust({ clients }: { clients: ClientLogo[] }) {
   const corpClients = clients.filter(c => c.category === 'CORPORATE');
   const otherClients = clients.filter(c => c.category === 'OTHERS');
   
-  const renderClientGroup = (title: string, group: ClientLogo[]) => {
+  const renderClientGroup = (title: string, group: ClientLogo[], reverse: boolean = false) => {
     if (group.length === 0) return null;
+    
+    // Duplicate the group to create an infinite loop effect
+    const duplicatedGroup = [...group, ...group, ...group]; 
+
     return (
-      <div className="flex flex-col gap-8">
-        <span className="text-label-sm text-tertiary uppercase tracking-widest font-bold">{title}</span>
-        <motion.div 
-          className="flex flex-wrap items-center gap-x-12 gap-y-8 opacity-80 hover:opacity-100 transition-all"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          {group.map((client) => (
-            <motion.div key={client.id} variants={itemVariants} className="w-32 h-16 relative rounded-sm flex items-center justify-center overflow-hidden group">
-              {client.logoUrl && client.logoUrl !== '[PLACEHOLDER]' ? (
-                <Image 
-                  src={client.logoUrl} 
-                  alt={client.name} 
-                  fill 
-                  className="object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
-                />
-              ) : (
-                <div className="w-full h-full bg-surface-container-high border border-outline-variant/30 flex items-center justify-center rounded">
-                   <span className="text-on-surface-variant text-[10px] uppercase font-bold tracking-wider">{client.name}</span>
-                </div>
-              )}
-            </motion.div>
-          ))}
-        </motion.div>
+      <div className="flex flex-col gap-8 overflow-hidden w-full relative">
+        <span className="text-label-sm text-tertiary uppercase tracking-widest font-bold px-margin-mobile md:px-margin-desktop">{title}</span>
+        
+        {/* Fading edges */}
+        <div className="absolute top-0 bottom-0 left-0 w-16 md:w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none mt-12"></div>
+        <div className="absolute top-0 bottom-0 right-0 w-16 md:w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none mt-12"></div>
+
+        <div className="flex w-full overflow-hidden pause-on-hover">
+          <div className={`flex w-max min-w-full shrink-0 gap-8 md:gap-16 items-center px-4 md:px-8 ${reverse ? 'animate-marquee-reverse' : 'animate-marquee'}`}>
+            {duplicatedGroup.map((client, i) => (
+              <div key={`${client.id}-${i}`} className="w-28 md:w-36 h-12 md:h-16 relative rounded-sm flex items-center justify-center overflow-hidden shrink-0 group">
+                {client.logoUrl && client.logoUrl !== '[PLACEHOLDER]' ? (
+                  <Image 
+                    src={client.logoUrl} 
+                    alt={client.name} 
+                    fill 
+                    className="object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-surface-container-high border border-outline-variant/30 flex items-center justify-center rounded">
+                     <span className="text-on-surface-variant text-[10px] uppercase font-bold tracking-wider">{client.name}</span>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+          {/* Second duplicate for seamless looping */}
+          <div className={`flex w-max min-w-full shrink-0 gap-8 md:gap-16 items-center px-4 md:px-8 ${reverse ? 'animate-marquee-reverse' : 'animate-marquee'}`} aria-hidden="true">
+            {duplicatedGroup.map((client, i) => (
+              <div key={`dup-${client.id}-${i}`} className="w-28 md:w-36 h-12 md:h-16 relative rounded-sm flex items-center justify-center overflow-hidden shrink-0 group">
+                {client.logoUrl && client.logoUrl !== '[PLACEHOLDER]' ? (
+                  <Image 
+                    src={client.logoUrl} 
+                    alt={client.name} 
+                    fill 
+                    className="object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-surface-container-high border border-outline-variant/30 flex items-center justify-center rounded">
+                     <span className="text-on-surface-variant text-[10px] uppercase font-bold tracking-wider">{client.name}</span>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     );
   };
@@ -71,9 +95,9 @@ export function ClientTrust({ clients }: { clients: ClientLogo[] }) {
           </motion.div>
 
           <div className="flex flex-col gap-16 mt-8">
-            {renderClientGroup('Government & BUMN', govClients)}
-            {renderClientGroup('Corporate', corpClients)}
-            {renderClientGroup('Others', otherClients)}
+            {renderClientGroup('Government & BUMN', govClients, false)}
+            {renderClientGroup('Corporate', corpClients, true)}
+            {renderClientGroup('Others', otherClients, false)}
           </div>
         </div>
       </div>

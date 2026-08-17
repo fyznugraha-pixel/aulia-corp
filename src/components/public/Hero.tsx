@@ -50,7 +50,7 @@ export function Hero({
   };
 
   return (
-    <section className="relative w-full h-[90vh] md:h-screen min-h-[700px] flex items-end pb-section-gap overflow-hidden bg-background">
+    <section className="relative w-full min-h-[100svh] flex items-center md:items-end pt-24 md:pt-28 pb-16 md:pb-section-gap overflow-hidden bg-background">
       <div className="absolute inset-0 z-0 bg-surface-container-lowest overflow-hidden">
         <AnimatePresence mode="popLayout">
           {slides && slides.length > 0 ? (
@@ -81,7 +81,7 @@ export function Hero({
         </AnimatePresence>
         
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/30"></div>
-        <div className="absolute inset-0 bg-black/30"></div>
+        <div className="absolute inset-0 bg-black/40"></div>
       </div>
 
       <motion.div 
@@ -91,7 +91,7 @@ export function Hero({
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <div className="font-display-xl text-headline-xl md:text-display-xl font-black tracking-tighter uppercase max-w-5xl leading-[0.95] flex flex-wrap gap-x-4 gap-y-2">
+        <div className="font-display-xl text-headline-lg md:text-display-xl font-black tracking-tighter uppercase max-w-5xl leading-[0.95] flex flex-wrap gap-x-3 md:gap-x-4 gap-y-1 md:gap-y-2">
           {parts.map((part, index) => {
             const isGradient = index % 2 === 1; // odd index means it was inside asterisks
             const words = part.trim().split(' ').filter(w => w.length > 0);

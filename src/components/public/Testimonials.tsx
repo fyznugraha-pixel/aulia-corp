@@ -12,7 +12,7 @@ export function Testimonials({ testimonials }: { testimonials: Testimonial[] }) 
         <div className="flex flex-col gap-12">
           <div className="flex flex-col gap-4">
             <div className="w-12 h-px bg-tertiary"></div>
-            <h2 className="font-display-xl text-display-xl text-on-background font-black tracking-tighter uppercase">
+            <h2 className="font-display-xl text-headline-lg md:text-display-xl text-on-background font-black tracking-tighter uppercase">
               Client Feedback
             </h2>
           </div>

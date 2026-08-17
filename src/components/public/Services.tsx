@@ -20,62 +20,62 @@ export function Services() {
           
           <div className="flex flex-col gap-4">
             <div className="w-12 h-px bg-tertiary"></div>
-            <h2 className="font-display-xl text-display-xl text-on-background font-black tracking-tighter uppercase">
+            <h2 className="font-display-xl text-headline-lg md:text-display-xl text-on-background font-black tracking-tighter uppercase">
               Layanan Kami
             </h2>
           </div>
 
           <motion.div 
-            className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 pb-8 -mx-margin-mobile px-margin-mobile md:mx-0 md:px-0"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-6"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
           >
-            <motion.div variants={itemVariants} className="min-w-[85vw] snap-center shrink-0 md:min-w-0 flex flex-col gap-6">
+            <motion.div variants={itemVariants} className="flex flex-col gap-6">
               <div className="aspect-[3/4] overflow-hidden rounded">
                 <div className="w-full h-full bg-surface-container-lowest/10 border border-surface-container-lowest/40 transition-transform duration-300 hover:scale-105 flex items-center justify-center">
                   <span className="text-on-surface-variant opacity-30 font-label-md tracking-widest uppercase">Placeholder</span>
                 </div>
               </div>
               <div className="flex flex-col gap-3">
-                <h3 className="font-display-xl text-headline-lg text-on-background font-black tracking-tighter uppercase">MICE</h3>
+                <h3 className="font-display-xl text-headline-sm md:text-headline-lg text-on-background font-black tracking-tighter uppercase">MICE</h3>
                 <p className="font-body-md text-body-md text-on-surface-variant text-balance">Mewujudkan segala impian event MICE yang fresh, kreatif, inovatif, and out of the box: mengubah imajinasi ide event kalian menjadi realita.</p>
               </div>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="min-w-[85vw] snap-center shrink-0 md:min-w-0 flex flex-col gap-6">
+            <motion.div variants={itemVariants} className="flex flex-col gap-6">
               <div className="aspect-[3/4] overflow-hidden rounded">
                 <div className="w-full h-full bg-surface-container-lowest/10 border border-surface-container-lowest/40 transition-transform duration-300 hover:scale-105 flex items-center justify-center">
                   <span className="text-on-surface-variant opacity-30 font-label-md tracking-widest uppercase">Placeholder</span>
                 </div>
               </div>
               <div className="flex flex-col gap-3">
-                <h3 className="font-display-xl text-headline-lg text-on-background font-black tracking-tighter uppercase">Film & Visual Branding</h3>
+                <h3 className="font-display-xl text-headline-sm md:text-headline-lg text-on-background font-black tracking-tighter uppercase">Film & Visual Branding</h3>
                 <p className="font-body-md text-body-md text-on-surface-variant text-balance">Melakukan promosi perusahaan lewat Web-Series, Music Video, dan Film Dokumenter, mewujudkan promosi perusahaan dalam bentuk audio-visual.</p>
               </div>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="min-w-[85vw] snap-center shrink-0 md:min-w-0 flex flex-col gap-6">
+            <motion.div variants={itemVariants} className="flex flex-col gap-6">
               <div className="aspect-[3/4] overflow-hidden rounded">
                 <div className="w-full h-full bg-surface-container-lowest/10 border border-surface-container-lowest/40 transition-transform duration-300 hover:scale-105 flex items-center justify-center">
                   <span className="text-on-surface-variant opacity-30 font-label-md tracking-widest uppercase">Placeholder</span>
                 </div>
               </div>
               <div className="flex flex-col gap-3">
-                <h3 className="font-display-xl text-headline-lg text-on-background font-black tracking-tighter uppercase">Thematic Decoration</h3>
+                <h3 className="font-display-xl text-headline-sm md:text-headline-lg text-on-background font-black tracking-tighter uppercase">Thematic Decoration</h3>
                 <p className="font-body-md text-body-md text-on-surface-variant text-balance">Membuat booth event paling banyak dikunjungi lewat desain yang kreatif, unik, dan menarik tanpa mengesampingkan fungsi. Booth paling keren dan jadi pusat perhatian di pameran.</p>
               </div>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="min-w-[85vw] snap-center shrink-0 md:min-w-0 flex flex-col gap-6">
+            <motion.div variants={itemVariants} className="flex flex-col gap-6">
               <div className="aspect-[3/4] overflow-hidden rounded">
                 <div className="w-full h-full bg-surface-container-lowest/10 border border-surface-container-lowest/40 transition-transform duration-300 hover:scale-105 flex items-center justify-center">
                   <span className="text-on-surface-variant opacity-30 font-label-md tracking-widest uppercase">Placeholder</span>
                 </div>
               </div>
               <div className="flex flex-col gap-3">
-                <h3 className="font-display-xl text-headline-lg text-on-background font-black tracking-tighter uppercase">Corporate & Event Branding</h3>
+                <h3 className="font-display-xl text-headline-sm md:text-headline-lg text-on-background font-black tracking-tighter uppercase">Corporate & Event Branding</h3>
                 <p className="font-body-md text-body-md text-on-surface-variant text-balance">Membuat logo perusahaan yang eye-catching dan berkesan, merepresentasikan karakter perusahaan menjadi logo dan branding yang sesuai.</p>
               </div>
             </motion.div>

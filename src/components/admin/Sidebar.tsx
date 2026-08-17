@@ -22,8 +22,9 @@ export function Sidebar() {
 
   return (
     <nav className="w-[260px] h-screen bg-surface-container-low border-r border-outline-variant flex flex-col fixed left-0 top-0 z-20">
-      <div className="h-16 flex items-center px-6 border-b border-outline-variant shrink-0">
-        <Image src="/logo/logo-black.png" alt="Auliacorp CMS" width={160} height={40} className="object-contain h-8 w-auto" priority />
+      <div className="h-16 flex items-center px-6 border-b border-outline-variant shrink-0 gap-2">
+        <Image src="/logo/logo-black.png" alt="Auliacorp" width={220} height={55} className="object-contain h-11 w-auto" priority />
+        <span className="font-display-lg text-title-md font-bold text-on-surface tracking-tight mt-2.5">CMS</span>
       </div>
       
       <div className="flex-1 py-6 px-4 flex flex-col gap-1 overflow-y-auto">

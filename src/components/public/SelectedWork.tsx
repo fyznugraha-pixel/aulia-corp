@@ -15,7 +15,7 @@ export function SelectedWork({ projects }: { projects: Project[] }) {
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
         <div className="flex flex-col gap-4 mb-16 md:mb-24">
         <div className="w-12 h-px bg-tertiary"></div>
-        <h2 className="font-display-xl text-display-xl text-on-background font-black tracking-tighter uppercase">
+        <h2 className="font-display-xl text-headline-lg md:text-display-xl text-on-background font-black tracking-tighter uppercase">
           Selected Work
         </h2>
       </div>

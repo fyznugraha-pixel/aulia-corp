@@ -33,11 +33,11 @@ export function About({
           <div className="w-full md:w-[60%] flex flex-col gap-8">
             <motion.div variants={itemVariants} className="flex flex-col gap-2">
               <div className="flex flex-col justify-center items-start">
-                <h2 className="font-display-lg text-headline-lg font-black tracking-tighter uppercase mb-6 text-on-background">
+                <h2 className="font-display-lg text-headline-lg font-black tracking-tighter uppercase mb-6 text-on-tertiary">
                   {aboutHeadline || "AULIACORP MEMBERIKAN PELAYANAN TERBAIK DENGAN MENGEDEPANKAN INOVASI DAN KREATIVITAS"}
                 </h2>
-                <div className="w-12 h-1 bg-tertiary mb-8"></div>
-                <p className="font-body-lg text-body-lg text-on-surface-variant mb-6 whitespace-pre-wrap">
+                <div className="w-12 h-1 bg-on-tertiary/50 mb-8"></div>
+                <p className="font-body-lg text-body-lg text-on-tertiary/80 mb-6 whitespace-pre-wrap font-medium">
                   {aboutDescription || "Kami tidak pernah berhenti melahirkan gagasan-gagasan hebat, agar selalu relevan terhadap dinamika industri dan kebutuhan pasar masa kini.\n\nMemiliki tim muda dan berpengalaman sejak 2003, ide kreatif kami telah banyak melahirkan karya terbaik bagi setiap partner & klien."}
                 </p>
               </div>
