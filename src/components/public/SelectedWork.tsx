@@ -61,6 +61,9 @@ export function SelectedWork({ projects }: { projects: Project[] }) {
                     </span>
                   ))}
                 </h3>
+                <span className="mt-6 md:mt-8 inline-flex items-center gap-2 px-6 py-3 bg-tertiary text-on-tertiary font-label-md font-bold rounded opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
+                  Lihat Detail <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+                </span>
               </div>
             </Link>
           );

@@ -90,6 +90,10 @@ export function AllProjects({
                   <span className="font-label-md text-label-md text-on-background/70">{project.year} • {project.city}</span>
                   <h3 className="font-display-lg text-headline-sm font-black tracking-tighter text-on-background uppercase">{project.title}</h3>
                   <p className="font-body-md text-body-md text-on-surface-variant line-clamp-3">{project.shortDesc}</p>
+                  <div className="flex items-center gap-2 mt-2 text-tertiary font-label-md font-bold group-hover:gap-4 transition-all duration-300">
+                    <span>Lihat Detail</span>
+                    <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+                  </div>
                 </div>
               </motion.div>
             </Link>
