@@ -24,7 +24,7 @@ export function Sidebar() {
     <nav className="w-[260px] h-screen bg-surface-container-low border-r border-outline-variant flex flex-col fixed left-0 top-0 z-20">
       <div className="h-20 flex items-center px-6 border-b border-outline-variant shrink-0 gap-2">
         <Image src="/logo/logo-black.png" alt="Auliacorp" width={200} height={50} className="object-contain h-11 w-auto" priority />
-        <span className="font-display-lg text-lg font-black text-on-surface tracking-widest mt-2.5 ml-1 uppercase">CMS</span>
+        <span className="font-display-lg text-lg font-medium text-on-surface tracking-widest mt-2.5 ml-1 uppercase">CMS</span>
       </div>
       
       <div className="flex-1 py-6 px-4 flex flex-col gap-1 overflow-y-auto">

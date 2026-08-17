@@ -27,26 +27,24 @@ export function Hero({
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.2, delayChildren: 0.1 } }
+    visible: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.2 } }
   };
-  // Parse headline to find text wrapped in *asterisks* for gradient
-  const rawHeadline = headline || "Memberikan pelayanan terbaik bagi semua klien dengan mengedepankan *inovasi dan kreativitas*";
   
+  const rawHeadline = headline || "Memberikan pelayanan terbaik bagi semua klien dengan mengedepankan *inovasi dan kreativitas*";
   const parts = rawHeadline.split('*');
   
   const wordVariants = {
-    hidden: { filter: 'blur(10px)', opacity: 0, y: 20 },
+    hidden: { y: "110%", opacity: 0 },
     visible: { 
-      filter: 'blur(0px)', 
-      opacity: 1, 
       y: 0, 
-      transition: { duration: 0.8, ease: "easeOut" as any } 
+      opacity: 1, 
+      transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] as any } 
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" as any } }
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] as any } }
   };
 
   return (
@@ -62,13 +60,24 @@ export function Hero({
               transition={{ duration: 1.5, ease: 'easeInOut' }}
               className="absolute inset-0 w-full h-full"
             >
-              <Image 
-                src={slides[currentSlideIndex].imageUrl} 
-                alt="Hero Background" 
-                fill 
-                className="object-cover"
-                priority
-              />
+              <>
+                <Image 
+                  src={slides[currentSlideIndex].imageUrl} 
+                  alt="Hero Background" 
+                  fill 
+                  className={`object-cover ${slides[currentSlideIndex].mobileImageUrl ? 'hidden md:block' : ''}`}
+                  priority
+                />
+                {slides[currentSlideIndex].mobileImageUrl && (
+                  <Image 
+                    src={slides[currentSlideIndex].mobileImageUrl} 
+                    alt="Hero Background Mobile" 
+                    fill 
+                    className="object-cover md:hidden"
+                    priority
+                  />
+                )}
+              </>
             </motion.div>
           ) : (
             <div className="w-full h-full bg-surface-container-lowest flex items-center justify-center relative overflow-hidden">
@@ -97,13 +106,14 @@ export function Hero({
             const words = part.trim().split(' ').filter(w => w.length > 0);
             
             return words.map((word, wordIndex) => (
-              <motion.span 
-                key={`${index}-${wordIndex}`} 
-                variants={wordVariants} 
-                className={isGradient ? "bg-gradient-to-r from-tertiary via-blue-400 to-tertiary bg-clip-text text-transparent" : "text-on-background"}
-              >
-                {word}
-              </motion.span>
+              <span key={`${index}-${wordIndex}`} className="overflow-hidden inline-flex pb-4 -mb-4 pt-2 -mt-2">
+                <motion.span 
+                  variants={wordVariants} 
+                  className={`inline-block ${isGradient ? "bg-gradient-to-r from-tertiary via-blue-400 to-tertiary bg-clip-text text-transparent" : "text-on-background"}`}
+                >
+                  {word}
+                </motion.span>
+              </span>
             ));
           })}
         </div>

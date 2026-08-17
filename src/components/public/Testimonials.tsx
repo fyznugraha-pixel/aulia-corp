@@ -54,6 +54,15 @@ export function Testimonials({ testimonials }: { testimonials: Testimonial[] }) 
               </motion.div>
             ))}
           </motion.div>
+
+          {/* Helper text for mobile */}
+          {testimonials.length > 1 && (
+            <div className="md:hidden flex justify-center -mt-6 pb-2 pointer-events-none">
+              <span className="text-xs text-on-surface-variant bg-surface-container-high/50 px-4 py-1.5 rounded-full border border-outline-variant/20 shadow-sm flex items-center gap-1 font-medium">
+                Geser untuk membaca lainnya <span className="material-symbols-outlined text-[16px]">arrow_right_alt</span>
+              </span>
+            </div>
+          )}
         </div>
       </div>
     </section>

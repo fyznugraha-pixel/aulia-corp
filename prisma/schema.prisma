@@ -69,13 +69,14 @@ model EventVideo {
 }
 
 model HeroSlider {
-  id        String   @id @default(cuid())
-  imageUrl  String
-  title     String?
-  order     Int      @default(0)
-  isActive  Boolean  @default(true)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id             String   @id @default(cuid())
+  imageUrl       String
+  mobileImageUrl String?
+  title          String?
+  order          Int      @default(0)
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }
 
 model SiteSettings {
