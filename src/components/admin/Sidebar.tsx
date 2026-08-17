@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { logoutAction } from '@/app/admin/actions';
@@ -22,7 +23,7 @@ export function Sidebar() {
   return (
     <nav className="w-[260px] h-screen bg-surface-container-low border-r border-outline-variant flex flex-col fixed left-0 top-0 z-20">
       <div className="h-16 flex items-center px-6 border-b border-outline-variant shrink-0">
-        <span className="font-display-lg text-title-md font-bold text-on-surface tracking-tight">Auliacorp CMS</span>
+        <Image src="/logo/logo-black.png" alt="Auliacorp CMS" width={160} height={40} className="object-contain h-8 w-auto" priority />
       </div>
       
       <div className="flex-1 py-6 px-4 flex flex-col gap-1 overflow-y-auto">
