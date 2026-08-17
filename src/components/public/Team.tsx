@@ -10,7 +10,7 @@ export function Team({ members }: { members: TeamMember[] }) {
   const otherMembers = members.filter(m => m.id !== founder?.id);
 
   return (
-    <section className="w-full bg-background py-section-gap">
+    <section className="w-full bg-background py-section-gap" id="team">
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
         
         <div className="flex flex-col gap-4 mb-16 md:mb-24">

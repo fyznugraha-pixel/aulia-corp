@@ -7,7 +7,7 @@ export function Testimonials({ testimonials }: { testimonials: Testimonial[] }) 
   if (!testimonials || testimonials.length === 0) return null;
 
   return (
-    <section className="w-full bg-surface-container py-section-gap border-t border-on-surface/5">
+    <section className="w-full bg-surface-container py-section-gap border-t border-on-surface/5" id="testimonials">
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
         <div className="flex flex-col gap-12">
           <div className="flex flex-col gap-4">
