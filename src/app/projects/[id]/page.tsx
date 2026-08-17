@@ -89,20 +89,32 @@ export default async function ProjectDetailPage(props: { params: Promise<{ id: s
               </div>
             </div>
             
-            <div className="lg:col-span-8 flex flex-col gap-12 pt-2 lg:pt-14">
-              {project.shortDesc && project.shortDesc !== '[PLACEHOLDER]' && (
-                <p className="font-body-lg text-xl md:text-2xl text-on-background leading-relaxed font-medium">
-                  {project.shortDesc}
-                </p>
-              )}
-              
-              {project.fullDesc && project.fullDesc !== '[PLACEHOLDER]' && (
-                <div className="prose prose-invert prose-lg max-w-none prose-p:text-on-background/70 prose-headings:text-on-background prose-headings:font-display-lg prose-headings:font-black prose-headings:tracking-tighter prose-headings:uppercase">
-                  {project.fullDesc.split('\n\n').map((paragraph, i) => (
-                    <p key={i} className="mb-6 font-body-lg leading-relaxed">{paragraph}</p>
-                  ))}
+            <div className="lg:col-span-8 flex flex-col gap-12 lg:pt-0">
+              <div className="flex flex-col gap-8">
+                <div className="flex flex-col gap-4">
+                  <div className="w-12 h-px bg-tertiary"></div>
+                  <h3 className="font-display-lg text-headline-sm text-on-background font-black tracking-tighter uppercase">Deskripsi Proyek</h3>
                 </div>
-              )}
+                
+                <div className="flex flex-col gap-6">
+                  {/* Short Description */}
+                  <p className="font-body-lg text-xl md:text-2xl text-on-background leading-relaxed font-medium">
+                    {project.shortDesc && project.shortDesc !== '[PLACEHOLDER]' 
+                      ? project.shortDesc 
+                      : <span className="text-on-surface-variant/50 italic text-base font-normal">Deskripsi singkat belum tersedia.</span>}
+                  </p>
+                  
+                  {/* Full Description */}
+                  <div className="prose prose-invert prose-lg max-w-none prose-p:text-on-background/70 prose-headings:text-on-background prose-headings:font-display-lg prose-headings:font-black prose-headings:tracking-tighter prose-headings:uppercase mt-2">
+                    {project.fullDesc && project.fullDesc !== '[PLACEHOLDER]' 
+                      ? project.fullDesc.split('\n\n').map((paragraph, i) => (
+                          <p key={i} className="mb-6 font-body-lg leading-relaxed">{paragraph}</p>
+                        ))
+                      : <p className="text-on-surface-variant/50 italic text-base">Detail lengkap proyek belum tersedia.</p>
+                    }
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
