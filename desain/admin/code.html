@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Auliacorp CMS - Projects</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary": "#ffffff",
+                      "primary-container": "#161b2b",
+                      "inverse-primary": "#c2c6db",
+                      "surface-dim": "#cbdbf5",
+                      "on-primary-fixed-variant": "#414658",
+                      "on-secondary-container": "#666462",
+                      "secondary": "#605e5c",
+                      "secondary-container": "#e5e2df",
+                      "surface-container": "#e5eeff",
+                      "on-tertiary-fixed": "#3b0800",
+                      "on-tertiary-fixed-variant": "#7f2a12",
+                      "outline": "#76767d",
+                      "on-tertiary": "#ffffff",
+                      "surface-bright": "#f8f9ff",
+                      "on-surface-variant": "#46464c",
+                      "on-tertiary-container": "#ce6548",
+                      "on-error-container": "#93000a",
+                      "on-secondary": "#ffffff",
+                      "secondary-fixed-dim": "#c9c6c3",
+                      "surface-variant": "#d3e4fe",
+                      "background": "#f8f9ff",
+                      "on-background": "#0b1c30",
+                      "inverse-on-surface": "#eaf1ff",
+                      "on-surface": "#0b1c30",
+                      "inverse-surface": "#213145",
+                      "surface-container-highest": "#d3e4fe",
+                      "error": "#ba1a1a",
+                      "surface": "#f8f9ff",
+                      "tertiary": "#000000",
+                      "primary": "#000000",
+                      "primary-fixed-dim": "#c2c6db",
+                      "on-error": "#ffffff",
+                      "on-primary-container": "#7f8397",
+                      "secondary-fixed": "#e5e2df",
+                      "on-secondary-fixed-variant": "#484745",
+                      "surface-container-low": "#eff4ff",
+                      "error-container": "#ffdad6",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed-dim": "#ffb5a1",
+                      "on-primary-fixed": "#161b2b",
+                      "tertiary-fixed": "#ffdbd1",
+                      "outline-variant": "#c7c6cd",
+                      "surface-tint": "#595e70",
+                      "on-secondary-fixed": "#1c1b1a",
+                      "primary-fixed": "#dee1f7",
+                      "surface-container-high": "#dce9ff",
+                      "tertiary-container": "#3b0800"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "panel-max-width": "480px",
+                      "gutter": "16px",
+                      "unit": "4px",
+                      "container-padding": "24px",
+                      "sidebar-width": "260px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "display-lg-mobile": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "display-sm": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-md": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-[#FDF9F6] text-on-background font-body-md text-body-md antialiased flex">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-sidebar-width bg-primary-container dark:bg-primary-container border-r border-outline-variant dark:border-outline flex flex-col overflow-y-auto z-20">
+<div class="px-gutter py-6 border-b border-on-primary-fixed-variant">
+<h1 class="font-display-sm text-display-sm font-bold text-on-primary tracking-tight">Auliacorp</h1>
+<p class="font-label-sm text-label-sm text-on-primary-container mt-1">Admin Suite</p>
+</div>
+<nav class="flex-1 py-4 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container hover:text-on-primary hover:bg-on-primary-fixed-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary border-l-2 border-on-tertiary-container bg-on-primary-fixed-variant opacity-90 scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="work" style="font-variation-settings: 'FILL' 1;">work</span>
+<span class="font-label-md text-label-md">Projects</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container hover:text-on-primary hover:bg-on-primary-fixed-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Team</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container hover:text-on-primary hover:bg-on-primary-fixed-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="format_quote">format_quote</span>
+<span class="font-label-md text-label-md">Testimonials</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container hover:text-on-primary hover:bg-on-primary-fixed-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="brand_awareness">brand_awareness</span>
+<span class="font-label-md text-label-md">Client Logos</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container hover:text-on-primary hover:bg-on-primary-fixed-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-on-primary-fixed-variant">
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container hover:text-on-primary hover:bg-on-primary-fixed-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-[260px] flex-1 flex flex-col min-h-screen">
+<!-- TopNavBar equivalent -->
+<header class="sticky top-0 right-0 w-full h-16 bg-[#FFFFFF] border-b border-[#E2E8F0] flex justify-between items-center px-container-padding z-10">
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Projects</h2>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="pl-10 pr-4 py-2 border border-[#CBD5E1] rounded w-64 text-sm focus:outline-none focus:border-[#C05A3E] focus:ring-1 focus:ring-[#C05A3E]" placeholder="Search projects..." type="text"/>
+</div>
+<button class="bg-[#C05A3E] hover:bg-[#a64d35] text-white font-label-md text-label-md px-4 py-2 rounded transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+                    + Tambah Project
+                </button>
+<div class="h-6 w-px bg-[#E2E8F0] mx-2"></div>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Canvas -->
+<div class="p-container-padding max-w-[1440px] w-full mx-auto flex flex-col gap-6">
+<!-- Filter Row -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<button class="px-4 py-1.5 rounded-full bg-[#C05A3E] text-white font-label-sm text-label-sm">All</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm border border-outline-variant hover:bg-surface-variant transition-colors">MICE</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm border border-outline-variant hover:bg-surface-variant transition-colors">Exhibition</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm border border-outline-variant hover:bg-surface-variant transition-colors">Branding</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm border border-outline-variant hover:bg-surface-variant transition-colors">Film</button>
+</div>
+<label class="flex items-center gap-2 cursor-pointer">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Featured only</span>
+<div class="relative">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-variant rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#C05A3E]"></div>
+</div>
+</label>
+</div>
+<!-- Data Table Card -->
+<div class="bg-[#FFFFFF] border border-[#E2E8F0] rounded shadow-sm overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-[#F8FAFC] border-b border-[#E2E8F0]">
+<th class="py-3 px-4 font-label-sm text-label-sm uppercase text-slate-500 w-16">Thumbnail</th>
+<th class="py-3 px-4 font-label-sm text-label-sm uppercase text-slate-500">Title</th>
+<th class="py-3 px-4 font-label-sm text-label-sm uppercase text-slate-500">Category</th>
+<th class="py-3 px-4 font-label-sm text-label-sm uppercase text-slate-500">Year</th>
+<th class="py-3 px-4 font-label-sm text-label-sm uppercase text-slate-500">City</th>
+<th class="py-3 px-4 font-label-sm text-label-sm uppercase text-slate-500 text-center">Featured</th>
+<th class="py-3 px-4 font-label-sm text-label-sm uppercase text-slate-500 text-center">Order</th>
+<th class="py-3 px-4 font-label-sm text-label-sm uppercase text-slate-500 text-right">Actions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-[#F1F5F9] hover:bg-[#F8FAFC] transition-colors group">
+<td class="p-3 px-4 align-middle">
+<img class="w-10 h-10 object-cover rounded bg-surface-variant" data-alt="A modern, high-contrast flat lay photograph representing an energetic festival event. Deep blacks, crisp whites, and vibrant orange accents in a clean, studio lighting setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWVH_rUnoVT3Ijgnzx5KPoK0uwymUW4eeCToVWhwSX6s-J12lfR47v0DrLaLhtkfLWQ7G3n0FwYyGkV7-1cf6IDRHpoign345HdsKiN_8esqd1t7Vy7rNMNd_TwHxNs1pi4COoQaZbjSdpe2t7m-8sVJ8pamjWEjkP0LFDFhHDf1RBsER2DKnxkU-vTVhtZP81kAndMcc4IAYuScBk5tABqAqAM_ezHSiJsmA5Ic3rgay46KAmkO7y"/>
+</td>
+<td class="py-3 px-4 align-middle font-body-md text-on-surface font-medium">Festival Cisadane</td>
+<td class="py-3 px-4 align-middle">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-[#eff4ff] text-[#0b1c30]">MICE</span>
+</td>
+<td class="py-3 px-4 align-middle text-on-surface-variant">2024</td>
+<td class="py-3 px-4 align-middle text-on-surface-variant">Tangerang</td>
+<td class="py-3 px-4 align-middle text-center">
+<span class="material-symbols-outlined text-[#C05A3E] text-[20px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</td>
+<td class="py-3 px-4 align-middle text-center text-on-surface-variant">1</td>
+<td class="py-3 px-4 align-middle text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-outline hover:text-primary transition-colors p-1"><span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span></button>
+<button class="text-outline hover:text-error transition-colors p-1"><span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span></button>
+</div>
+</td>
+</tr>
+<tr class="border-b border-[#F1F5F9] hover:bg-[#F8FAFC] transition-colors group">
+<td class="p-3 px-4 align-middle">
+<img class="w-10 h-10 object-cover rounded bg-surface-variant" data-alt="A clean, minimalist abstract composition representing an international conference. Bright lighting, geometric shapes, predominantly white with subtle corporate blue and burnt amber details." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDe98OH4-5lihzaP8I7OQrJzqnCrv2bxPSUsFWEvXFyXnxF_6vMGtOaCXbjMPdBPiSmAn2x4jPdtoMZ1B8vZY78g39--BWeXevfA297ksNfMRbHSzQyudaKw70jy0vgrHhGuKmwda6eXKN5hRPmiHuzJzwSZEYgCnTNnF52wH2ykLP-GTMFLxBObUzdBfIgD--VAIvmDe7HW0-Ckz5WH1whZjGF6a-JZW5-EME29XI13SZbz9hacdLH"/>
+</td>
+<td class="py-3 px-4 align-middle font-body-md text-on-surface font-medium">Asia Afrika Festival 2025</td>
+<td class="py-3 px-4 align-middle">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-[#eff4ff] text-[#0b1c30]">MICE</span>
+</td>
+<td class="py-3 px-4 align-middle text-on-surface-variant">2025</td>
+<td class="py-3 px-4 align-middle text-on-surface-variant">Bandung</td>
+<td class="py-3 px-4 align-middle text-center">
+<span class="material-symbols-outlined text-[#C05A3E] text-[20px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</td>
+<td class="py-3 px-4 align-middle text-center text-on-surface-variant">2</td>
+<td class="py-3 px-4 align-middle text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-outline hover:text-primary transition-colors p-1"><span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span></button>
+<button class="text-outline hover:text-error transition-colors p-1"><span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span></button>
+</div>
+</td>
+</tr>
+<tr class="border-b border-[#F1F5F9] hover:bg-[#F8FAFC] transition-colors group">
+<td class="p-3 px-4 align-middle">
+<img class="w-10 h-10 object-cover rounded bg-surface-variant" data-alt="A retail and branding focused graphic composition. High contrast lighting, shopping motif simplified into sleek vector-like shapes, strict white and dark navy palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdvdqp-zB7kXVGO_Oy8Ehx7eZDtRYiuopKOhAs-SMPucCTQPjze2Q0A_bpZYh06ShO7FAUfhd7UtQxUQXUJaKb7uH_Pn1opNU3kkBSnKs-pXS6h7iSowbLnqq3Q3FQDQGj0huek9kZi4T33XwfeBsoZljEM1Ku1MC_YvS2lRSxVb_bpMwTmlx0nXbi_dfCCsftwgwpk4dY7oHl_h2_wMfJM_DqSsv8CTivQuLA9UkmYKYicUk-qbwn"/>
+</td>
+<td class="py-3 px-4 align-middle font-body-md text-on-surface font-medium">Bandung Great Sale 2025</td>
+<td class="py-3 px-4 align-middle">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-[#d3e4fe] text-[#0b1c30]">Branding</span>
+</td>
+<td class="py-3 px-4 align-middle text-on-surface-variant">2025</td>
+<td class="py-3 px-4 align-middle text-on-surface-variant">Bandung</td>
+<td class="py-3 px-4 align-middle text-center">
+<span class="material-symbols-outlined text-outline-variant text-[20px]" data-icon="star">star</span>
+</td>
+<td class="py-3 px-4 align-middle text-center text-on-surface-variant">3</td>
+<td class="py-3 px-4 align-middle text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-outline hover:text-primary transition-colors p-1"><span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span></button>
+<button class="text-outline hover:text-error transition-colors p-1"><span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span></button>
+</div>
+</td>
+</tr>
+<tr class="border-b border-[#F1F5F9] hover:bg-[#F8FAFC] transition-colors group">
+<td class="p-3 px-4 align-middle">
+<img class="w-10 h-10 object-cover rounded bg-surface-variant" data-alt="An exhibition booth mockup in a vast minimalist hall. Soft, diffuse lighting creating subtle shadows. The aesthetic is extremely clean, modern, with sparse warm accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4p0EPO_TqQWsA0NYpdwHMkTLZX1qzt2kKAedV5NgSMJGdghky8xzITiasKS1uqJIyTsdmn4pCSH5elzYywPpiTXXwXLpVxAqqP-BnvehjhGfltpERDXUfGm3VSPtkN6U-bTX3n4ljjasjtCUXaaCoPhqrl0Z7-2TNwtS4J658lqi2dzZZ3yUeWku3yeWOqDDN059xM8N3t3yOd8qJnptLayhgOncMkaOy89WfyAI9MoDAseG2CLZj"/>
+</td>
+<td class="py-3 px-4 align-middle font-body-md text-on-surface font-medium">Akselerasi Ekspor Kreasi Indonesia</td>
+<td class="py-3 px-4 align-middle">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-[#eaf1ff] text-[#0b1c30]">Exhibition</span>
+</td>
+<td class="py-3 px-4 align-middle text-on-surface-variant">2024</td>
+<td class="py-3 px-4 align-middle text-on-surface-variant">Jakarta</td>
+<td class="py-3 px-4 align-middle text-center">
+<span class="material-symbols-outlined text-[#C05A3E] text-[20px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</td>
+<td class="py-3 px-4 align-middle text-center text-on-surface-variant">4</td>
+<td class="py-3 px-4 align-middle text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-outline hover:text-primary transition-colors p-1"><span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span></button>
+<button class="text-outline hover:text-error transition-colors p-1"><span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span></button>
+</div>
+</td>
+</tr>
+<tr class="border-b border-[#F1F5F9] hover:bg-[#F8FAFC] transition-colors group">
+<td class="p-3 px-4 align-middle">
+<img class="w-10 h-10 object-cover rounded bg-surface-variant" data-alt="A stylized film clapperboard resting on a pristine white surface. Minimalist design, stark black and white contrast with a single burnt amber line across the top. Studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIpzrYET6Epa6EuITF83aNdqmDAYv2I09sHnn5nGdCK6NvNLN5XdVJWoMqlL2QzR9NVk4RKOgxtSYte0eotVkh3SujSAMOO1rqt7l_ft3tyi3C-7ZIvGMdFsqM3iSW44vXBdgFRdy2k_G7uS-endbTsd5HA_FBcOa5SU1OtVh9ndhNloWFI6bdwhvZJUhuRnRep6mtXkhJt6T9LyLqMIJB0SF0dkqtsQRG-TqYl8kJrwYJtTjyf9_l"/>
+</td>
+<td class="py-3 px-4 align-middle font-body-md text-on-surface font-medium">Inkubasi Kuliner</td>
+<td class="py-3 px-4 align-middle">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-[#f8f9ff] text-[#0b1c30] border border-[#d3e4fe]">Film</span>
+</td>
+<td class="py-3 px-4 align-middle text-on-surface-variant">2023</td>
+<td class="py-3 px-4 align-middle text-on-surface-variant">Surabaya</td>
+<td class="py-3 px-4 align-middle text-center">
+<span class="material-symbols-outlined text-outline-variant text-[20px]" data-icon="star">star</span>
+</td>
+<td class="py-3 px-4 align-middle text-center text-on-surface-variant">5</td>
+<td class="py-3 px-4 align-middle text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-outline hover:text-primary transition-colors p-1"><span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span></button>
+<button class="text-outline hover:text-error transition-colors p-1"><span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Pagination -->
+<div class="px-4 py-3 border-t border-[#E2E8F0] bg-white flex items-center justify-between">
+<div class="text-sm text-on-surface-variant">
+                        Showing 1 to 5 of 24 entries
+                    </div>
+<div class="flex items-center gap-1">
+<button class="px-3 py-1 border border-outline-variant rounded text-sm text-on-surface-variant hover:bg-surface-variant disabled:opacity-50" disabled="">Prev</button>
+<button class="px-3 py-1 border border-[#C05A3E] bg-[#C05A3E] text-white rounded text-sm">1</button>
+<button class="px-3 py-1 border border-outline-variant rounded text-sm text-on-surface-variant hover:bg-surface-variant">2</button>
+<button class="px-3 py-1 border border-outline-variant rounded text-sm text-on-surface-variant hover:bg-surface-variant">3</button>
+<span class="px-2 text-on-surface-variant">...</span>
+<button class="px-3 py-1 border border-outline-variant rounded text-sm text-on-surface-variant hover:bg-surface-variant">5</button>
+<button class="px-3 py-1 border border-outline-variant rounded text-sm text-on-surface-variant hover:bg-surface-variant">Next</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

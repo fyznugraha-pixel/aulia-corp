@@ -1,0 +1,112 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// --- Portfolio / Event ---
+model Project {
+  id          String          @id @default(cuid())
+  title       String
+  category    ProjectCategory
+  year        Int
+  city        String?
+  shortDesc   String
+  fullDesc    String?
+  coverImage  String
+  gallery     String[]        @default([])
+  isFeatured  Boolean         @default(false)
+  order       Int             @default(0)
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+}
+
+enum ProjectCategory {
+  MICE
+  EXHIBITION
+  BRANDING
+  FILM
+}
+
+model TeamMember {
+  id           String   @id @default(cuid())
+  name         String
+  role         String
+  photo        String
+  isLeadership Boolean  @default(false)
+  order        Int      @default(0)
+}
+
+model Testimonial {
+  id        String   @id @default(cuid())
+  name      String
+  role      String
+  quote     String
+  rating    Int      @default(5)
+  photo     String?
+  order     Int      @default(0)
+}
+
+model ClientLogo {
+  id       String         @id @default(cuid())
+  name     String
+  logoUrl  String
+  category ClientCategory
+  order    Int            @default(0)
+}
+
+enum ClientCategory {
+  GOVERNMENT_BUMN
+  CORPORATE
+  OTHERS
+}
+
+model EventVideo {
+  id          String   @id @default(cuid())
+  title       String
+  youtubeUrl  String
+  order       Int      @default(0)
+  isFeatured  Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model HeroSlider {
+  id        String   @id @default(cuid())
+  imageUrl  String
+  title     String?
+  order     Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SiteSettings {
+  id                  Int      @id @default(1)
+  heroHeadline        String
+  heroSubheadline     String
+  yearsActive         Int
+  ctaText             String   @default("Konsultasi Gratis")
+  aboutImage          String?
+  aboutHeadline       String   @default("AULIACORP MEMBERIKAN PELAYANAN TERBAIK DENGAN MENGEDEPANKAN INOVASI DAN KREATIVITAS")
+  aboutDescription    String   @default("Kami tidak pernah berhenti melahirkan gagasan-gagasan hebat...")
+  contactEmail        String   @default("hello@auliacorp.id")
+  contactPhone        String   @default("021-12345678")
+  contactWhatsapp     String   @default("628123456789")
+  contactAddress      String   @default("Jl. Contoh Alamat No. 123, Jakarta Selatan, 12345")
+  socialInstagram     String?
+  socialFacebook      String?
+  socialTiktok        String?
+  socialYoutube       String?
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+}
