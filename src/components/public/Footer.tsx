@@ -55,11 +55,6 @@ export function Footer({ settings }: { settings?: SiteSettings | null }) {
 
         <div className="pt-8 border-t border-on-surface/10 font-body-md text-on-surface-variant flex flex-col md:flex-row justify-between items-center gap-4">
           <p>&copy; {currentYear} Auliacorp. All rights reserved.</p>
-          <div className="flex gap-6">
-            <Link href="/admin/login" className="hover:text-tertiary transition-colors">
-              Admin Login
-            </Link>
-          </div>
         </div>
       </div>
     </footer>
