@@ -26,13 +26,13 @@ export function Services() {
           </div>
 
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 pb-8 -mx-margin-mobile px-margin-mobile md:mx-0 md:px-0"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
           >
-            <motion.div variants={itemVariants} className="flex flex-col gap-6">
+            <motion.div variants={itemVariants} className="min-w-[85vw] snap-center shrink-0 md:min-w-0 flex flex-col gap-6">
               <div className="aspect-[3/4] overflow-hidden rounded">
                 <div className="w-full h-full bg-surface-container-lowest/10 border border-surface-container-lowest/40 transition-transform duration-300 hover:scale-105 flex items-center justify-center">
                   <span className="text-on-surface-variant opacity-30 font-label-md tracking-widest uppercase">Placeholder</span>
@@ -44,7 +44,7 @@ export function Services() {
               </div>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="flex flex-col gap-6">
+            <motion.div variants={itemVariants} className="min-w-[85vw] snap-center shrink-0 md:min-w-0 flex flex-col gap-6">
               <div className="aspect-[3/4] overflow-hidden rounded">
                 <div className="w-full h-full bg-surface-container-lowest/10 border border-surface-container-lowest/40 transition-transform duration-300 hover:scale-105 flex items-center justify-center">
                   <span className="text-on-surface-variant opacity-30 font-label-md tracking-widest uppercase">Placeholder</span>
@@ -56,7 +56,7 @@ export function Services() {
               </div>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="flex flex-col gap-6">
+            <motion.div variants={itemVariants} className="min-w-[85vw] snap-center shrink-0 md:min-w-0 flex flex-col gap-6">
               <div className="aspect-[3/4] overflow-hidden rounded">
                 <div className="w-full h-full bg-surface-container-lowest/10 border border-surface-container-lowest/40 transition-transform duration-300 hover:scale-105 flex items-center justify-center">
                   <span className="text-on-surface-variant opacity-30 font-label-md tracking-widest uppercase">Placeholder</span>
@@ -68,7 +68,7 @@ export function Services() {
               </div>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="flex flex-col gap-6">
+            <motion.div variants={itemVariants} className="min-w-[85vw] snap-center shrink-0 md:min-w-0 flex flex-col gap-6">
               <div className="aspect-[3/4] overflow-hidden rounded">
                 <div className="w-full h-full bg-surface-container-lowest/10 border border-surface-container-lowest/40 transition-transform duration-300 hover:scale-105 flex items-center justify-center">
                   <span className="text-on-surface-variant opacity-30 font-label-md tracking-widest uppercase">Placeholder</span>

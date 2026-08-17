@@ -48,7 +48,7 @@ export function Team({ members }: { members: TeamMember[] }) {
         )}
 
         <motion.div 
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-gutter gap-y-16"
+          className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-x-4 md:gap-x-gutter gap-y-12 md:gap-y-16"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -70,11 +70,11 @@ export function Team({ members }: { members: TeamMember[] }) {
                 {member.photo && member.photo !== '[PLACEHOLDER]' ? (
                    <Image src={member.photo} alt={member.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
                 ) : (
-                   <span className="text-on-surface-variant opacity-30 font-label-md tracking-widest uppercase">Placeholder</span>
+                   <span className="text-on-surface-variant opacity-30 font-label-md tracking-widest uppercase text-xs md:text-sm">Placeholder</span>
                 )}
               </div>
-              <h4 className="font-label-md text-body-lg text-on-background font-bold mb-1">{member.name}</h4>
-              <p className="font-label-sm text-tertiary uppercase tracking-wider">{member.role}</p>
+              <h4 className="font-label-md text-body-md md:text-body-lg text-on-background font-bold mb-1">{member.name}</h4>
+              <p className="font-label-sm text-[10px] md:text-xs text-tertiary uppercase tracking-wider">{member.role}</p>
             </motion.div>
           ))}
         </motion.div>
