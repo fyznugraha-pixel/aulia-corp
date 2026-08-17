@@ -7,7 +7,7 @@ export const loginSchema = z.object({
 
 export const projectSchema = z.object({
   title: z.string().min(1, 'Title is required'),
-  category: z.enum(['MICE', 'EXHIBITION', 'BRANDING', 'FILM']),
+  category: z.string().min(1, 'Category is required'),
   year: z.coerce.number().min(2000, 'Year must be a valid number'),
   city: z.string().optional(),
   shortDesc: z.string().min(1, 'Short description is required'),
@@ -57,6 +57,19 @@ export const siteSettingsSchema = z.object({
   socialFacebook: z.string().nullable().optional(),
   socialTiktok: z.string().nullable().optional(),
   socialYoutube: z.string().nullable().optional(),
+  projectCategories: z.preprocess(
+    (val) => {
+      if (typeof val === 'string') {
+        try {
+          return JSON.parse(val);
+        } catch {
+          return val;
+        }
+      }
+      return val;
+    },
+    z.array(z.string()).min(1, 'At least one project category is required')
+  ).optional(),
 });
 
 export const eventVideoSchema = z.object({

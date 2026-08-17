@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useActionState, useEffect } from 'react';
+import { useState, useActionState, useEffect, startTransition } from 'react';
 import { Testimonial } from '@prisma/client';
 import { SlideOver } from '@/components/admin/SlideOver';
 import { ConfirmDialog } from '@/components/admin/ConfirmDialog';
@@ -32,8 +32,9 @@ export function TestimonialManager({ initialTestimonials }: { initialTestimonial
       setIsCompressing(true);
     }
     
-    // @ts-ignore
-    formAction(formData);
+    startTransition(() => {
+      formAction(formData);
+    });
   };
 
   useEffect(() => {

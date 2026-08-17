@@ -72,7 +72,10 @@ export default async function Home() {
         
         <SelectedWork projects={featuredProjects} />
         
-        <AllProjects projects={projects} />
+        <AllProjects 
+          projects={projects} 
+          categories={settings.projectCategories || ['MICE', 'EXHIBITION', 'BRANDING', 'FILM']} 
+        />
         
         {videos.length > 0 && <VideoReel videos={videos} />}
         

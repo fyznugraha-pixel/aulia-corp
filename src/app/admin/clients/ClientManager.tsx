@@ -8,6 +8,7 @@ import { saveClientAction, deleteClientAction } from './actions';
 import Image from 'next/image';
 import { Plus, Edit2, Trash2, Loader2 } from 'lucide-react';
 import { ImageCropper } from '@/components/admin/ImageCropper';
+import { CustomSelect } from '@/components/admin/CustomSelect';
 
 export function ClientManager({ initialClients }: { initialClients: ClientLogo[] }) {
   const [isSlideOverOpen, setIsSlideOverOpen] = useState(false);
@@ -142,11 +143,16 @@ export function ClientManager({ initialClients }: { initialClients: ClientLogo[]
 
               <div>
                 <label className="block text-sm font-semibold text-slate-700 mb-1.5">Kategori Industri</label>
-                <select name="category" defaultValue={editingClient?.category || 'CORPORATE'} required className="w-full px-4 py-2.5 bg-white border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all outline-none text-slate-700">
-                  <option value="GOVERNMENT_BUMN">GOVERNMENT & BUMN</option>
-                  <option value="CORPORATE">CORPORATE</option>
-                  <option value="OTHERS">OTHERS</option>
-                </select>
+                <CustomSelect 
+                  name="category" 
+                  defaultValue={editingClient?.category || 'CORPORATE'} 
+                  required 
+                  options={[
+                    { label: 'GOVERNMENT & BUMN', value: 'GOVERNMENT_BUMN' },
+                    { label: 'CORPORATE', value: 'CORPORATE' },
+                    { label: 'OTHERS', value: 'OTHERS' },
+                  ]}
+                />
               </div>
             </div>
 

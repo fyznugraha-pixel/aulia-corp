@@ -10,14 +10,11 @@ export default async function SettingsPage() {
 
   return (
     <div className="p-6 md:p-8 w-full max-w-7xl mx-auto">
-      <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-        <div className="p-5 md:p-6 border-b border-slate-200 bg-slate-50">
-          <h2 className="text-lg md:text-xl font-bold text-slate-800">Site Settings</h2>
-        </div>
-        <div className="p-6 md:p-8">
-          <SettingsForm initialData={settings} />
-        </div>
+      <div className="mb-6">
+        <h2 className="text-2xl font-bold text-slate-800">Site Settings</h2>
+        <p className="text-slate-500 text-sm mt-1">Kelola informasi dan pengaturan utama website Anda.</p>
       </div>
+      <SettingsForm initialData={settings} />
     </div>
   );
 }

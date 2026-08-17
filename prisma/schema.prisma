@@ -12,7 +12,7 @@ datasource db {
 model Project {
   id          String          @id @default(cuid())
   title       String
-  category    ProjectCategory
+  category    String
   year        Int
   city        String?
   shortDesc   String
@@ -23,13 +23,6 @@ model Project {
   order       Int             @default(0)
   createdAt   DateTime        @default(now())
   updatedAt   DateTime        @updatedAt
-}
-
-enum ProjectCategory {
-  MICE
-  EXHIBITION
-  BRANDING
-  FILM
 }
 
 model TeamMember {
@@ -102,6 +95,7 @@ model SiteSettings {
   socialFacebook      String?
   socialTiktok        String?
   socialYoutube       String?
+  projectCategories   String[] @default(["MICE", "EXHIBITION", "BRANDING", "FILM"])
 }
 
 model AdminUser {

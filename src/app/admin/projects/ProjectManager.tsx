@@ -8,8 +8,15 @@ import { saveProjectAction, deleteProjectAction } from './actions';
 import Image from 'next/image';
 import { Plus, Edit2, Trash2, Loader2 } from 'lucide-react';
 import { ImageCropper } from '@/components/admin/ImageCropper';
+import { CustomSelect } from '@/components/admin/CustomSelect';
 
-export function ProjectManager({ initialProjects }: { initialProjects: Project[] }) {
+export function ProjectManager({ 
+  initialProjects, 
+  categories 
+}: { 
+  initialProjects: Project[];
+  categories: string[];
+}) {
   const [isSlideOverOpen, setIsSlideOverOpen] = useState(false);
   const [editingProject, setEditingProject] = useState<Project | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
@@ -208,12 +215,12 @@ export function ProjectManager({ initialProjects }: { initialProjects: Project[]
 
             <div>
               <label className="block text-sm font-semibold text-slate-700 mb-1.5">Kategori</label>
-              <select name="category" defaultValue={editingProject?.category} required className="w-full px-4 py-2.5 bg-white border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all outline-none text-slate-700">
-                <option value="MICE">MICE</option>
-                <option value="EXHIBITION">EXHIBITION</option>
-                <option value="BRANDING">BRANDING</option>
-                <option value="FILM">FILM</option>
-              </select>
+              <CustomSelect 
+                name="category" 
+                defaultValue={editingProject?.category || categories[0] || 'MICE'} 
+                required 
+                options={categories.map(cat => ({ label: cat, value: cat }))}
+              />
             </div>
 
             <div className="grid grid-cols-2 gap-4">

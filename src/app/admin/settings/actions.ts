@@ -21,6 +21,7 @@ export async function updateSettingsAction(prevState: any, formData: FormData) {
     socialFacebook: formData.get('socialFacebook') || null,
     socialTiktok: formData.get('socialTiktok') || null,
     socialYoutube: formData.get('socialYoutube') || null,
+    projectCategories: formData.get('projectCategories') || '["MICE", "EXHIBITION", "BRANDING", "FILM"]',
   };
 
   const aboutImageFile = formData.get('aboutImageFile') as File;

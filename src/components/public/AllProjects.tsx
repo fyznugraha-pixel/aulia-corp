@@ -7,10 +7,16 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { Project } from '@prisma/client';
 
-export function AllProjects({ projects }: { projects: Project[] }) {
+export function AllProjects({ 
+  projects,
+  categories = ['MICE', 'EXHIBITION', 'BRANDING', 'FILM']
+}: { 
+  projects: Project[];
+  categories?: string[];
+}) {
   const [filter, setFilter] = useState('All');
 
-  const categories = ['All', ...Array.from(new Set(projects.map(p => p.category)))];
+  const filterCategories = ['All', ...categories];
 
   const filteredProjects = filter === 'All' 
     ? projects 
@@ -28,7 +34,7 @@ export function AllProjects({ projects }: { projects: Project[] }) {
           </h2>
 
           <div className="flex overflow-x-auto hide-scrollbar gap-6 border-b border-on-surface/10 w-full md:w-auto">
-            {categories.map(cat => (
+            {filterCategories.map(cat => (
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
