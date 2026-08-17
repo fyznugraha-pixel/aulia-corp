@@ -5,6 +5,7 @@ import { prisma } from '@/lib/db';
 import { getSiteSettings } from '@/lib/services/settings.service';
 import { Navbar } from '@/components/public/Navbar';
 import { Footer } from '@/components/public/Footer';
+import { ProjectGallery } from '@/components/public/ProjectGallery';
 
 export const revalidate = 0;
 
@@ -59,44 +60,61 @@ export default async function ProjectDetailPage(props: { params: Promise<{ id: s
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 mb-24">
             <div className="lg:col-span-4">
-              <div className="sticky top-32 flex flex-col gap-6">
-                <div className="w-12 h-px bg-tertiary"></div>
-                <h3 className="font-display-lg text-headline-sm text-on-background font-black tracking-tighter uppercase">Overview</h3>
-                <p className="font-body-lg text-on-surface-variant leading-relaxed">
-                  {project.shortDesc}
-                </p>
+              <div className="sticky top-32 flex flex-col gap-8">
+                <div className="flex flex-col gap-4">
+                  <div className="w-12 h-px bg-tertiary"></div>
+                  <h3 className="font-display-lg text-headline-sm text-on-background font-black tracking-tighter uppercase">Project Info</h3>
+                </div>
+                
+                <div className="flex flex-col gap-4 bg-surface-container-low p-6 rounded-xl border border-outline-variant/20">
+                  <div className="flex flex-col gap-1">
+                    <span className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Kategori</span>
+                    <span className="text-on-background font-medium">{project.category}</span>
+                  </div>
+                  <div className="w-full h-px bg-outline-variant/10"></div>
+                  <div className="flex flex-col gap-1">
+                    <span className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Tahun</span>
+                    <span className="text-on-background font-medium">{project.year}</span>
+                  </div>
+                  {project.city && (
+                    <>
+                      <div className="w-full h-px bg-outline-variant/10"></div>
+                      <div className="flex flex-col gap-1">
+                        <span className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Lokasi</span>
+                        <span className="text-on-background font-medium">{project.city}</span>
+                      </div>
+                    </>
+                  )}
+                </div>
               </div>
             </div>
             
-            {project.fullDesc && (
-              <div className="lg:col-span-8">
-                <div className="prose prose-invert prose-lg max-w-none prose-p:text-on-background/80 prose-headings:text-on-background prose-headings:font-display-lg prose-headings:font-black prose-headings:tracking-tighter prose-headings:uppercase">
+            <div className="lg:col-span-8 flex flex-col gap-12 pt-2 lg:pt-14">
+              {project.shortDesc && project.shortDesc !== '[PLACEHOLDER]' && (
+                <p className="font-body-lg text-xl md:text-2xl text-on-background leading-relaxed font-medium">
+                  {project.shortDesc}
+                </p>
+              )}
+              
+              {project.fullDesc && project.fullDesc !== '[PLACEHOLDER]' && (
+                <div className="prose prose-invert prose-lg max-w-none prose-p:text-on-background/70 prose-headings:text-on-background prose-headings:font-display-lg prose-headings:font-black prose-headings:tracking-tighter prose-headings:uppercase">
                   {project.fullDesc.split('\n\n').map((paragraph, i) => (
-                    <p key={i} className="mb-6 font-body-lg leading-relaxed text-on-surface-variant">{paragraph}</p>
+                    <p key={i} className="mb-6 font-body-lg leading-relaxed">{paragraph}</p>
                   ))}
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
 
           {project.gallery && project.gallery.length > 0 && (
-            <div className="flex flex-col gap-12">
+            <div className="flex flex-col gap-8 w-full">
               <div className="flex flex-col gap-4">
                 <div className="w-12 h-px bg-tertiary"></div>
                 <h3 className="font-display-lg text-headline-md text-on-background font-black tracking-tighter uppercase">Gallery</h3>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
-                {project.gallery.map((imgUrl, i) => (
-                  <div key={i} className="aspect-square relative rounded-md overflow-hidden bg-surface-container border border-outline-variant/20 group">
-                    <Image 
-                      src={imgUrl} 
-                      alt={`${project.title} Gallery ${i + 1}`} 
-                      fill 
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" 
-                    />
-                  </div>
-                ))}
+              <div className="-mx-margin-mobile md:-mx-margin-desktop">
+                <ProjectGallery images={project.gallery} title={project.title} />
               </div>
             </div>
           )}
