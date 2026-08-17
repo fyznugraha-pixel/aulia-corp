@@ -65,9 +65,10 @@ export function TeamManager({ initialTeam }: { initialTeam: TeamMember[] }) {
   };
 
   return (
-    <div className="w-full bg-white">
-      <div className="p-4 border-b border-slate-200 flex justify-end">
-        <button onClick={() => { setEditingMember(null); setCroppedPhoto(null); setIsSlideOverOpen(true); }} className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700">
+    <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+      <div className="p-5 md:p-6 border-b border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-slate-50">
+        <h2 className="text-lg md:text-xl font-bold text-slate-800">Manage Team Members</h2>
+        <button onClick={() => { setEditingMember(null); setCroppedPhoto(null); setIsSlideOverOpen(true); }} className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 shadow-sm transition-colors">
           <Plus className="w-4 h-4" /> Add Member
         </button>
       </div>

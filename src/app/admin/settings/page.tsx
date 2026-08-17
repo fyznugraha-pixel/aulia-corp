@@ -9,18 +9,15 @@ export default async function SettingsPage() {
   }
 
   return (
-    <>
-      <header className="sticky top-0 right-0 w-full h-16 bg-background border-b border-outline-variant flex justify-between items-center px-container-padding z-10">
-        <h1 className="font-display-lg text-title-lg font-bold text-on-background tracking-tight">Site Settings</h1>
-        <div className="w-8 h-8 rounded-full bg-surface-container-high border border-outline flex items-center justify-center">
-          <span className="material-symbols-outlined text-[16px] text-on-surface-variant">person</span>
+    <div className="p-6 md:p-8 w-full max-w-7xl mx-auto">
+      <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <div className="p-5 md:p-6 border-b border-slate-200 bg-slate-50">
+          <h2 className="text-lg md:text-xl font-bold text-slate-800">Site Settings</h2>
         </div>
-      </header>
-      <div className="p-container-padding w-full mx-auto">
-        <div className="bg-surface-container-low p-8 rounded border border-outline-variant shadow-sm w-full">
+        <div className="p-6 md:p-8">
           <SettingsForm initialData={settings} />
         </div>
       </div>
-    </>
+    </div>
   );
 }

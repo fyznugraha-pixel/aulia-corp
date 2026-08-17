@@ -9,12 +9,14 @@ export function SettingsForm({ initialData }: { initialData: any }) {
   const [state, formAction, isPending] = useActionState(updateSettingsAction, null);
   const [croppedAboutImage, setCroppedAboutImage] = useState<File | null>(null);
   const [isCompressing, setIsCompressing] = useState(false);
+  const [isAboutImageRemoved, setIsAboutImageRemoved] = useState(false);
 
   useEffect(() => {
     if (state) {
       setIsCompressing(false);
       if (state.success) {
         setCroppedAboutImage(null);
+        setIsAboutImageRemoved(false);
       }
     }
   }, [state]);
@@ -101,7 +103,9 @@ export function SettingsForm({ initialData }: { initialData: any }) {
             label="Upload Foto Tentang Kami (Bisa digeser & dicrop)"
             aspect={1} // Assuming square for About section image
             defaultPreview={initialData.aboutImage}
-            onCropComplete={setCroppedAboutImage}
+            onCropComplete={(f) => { setCroppedAboutImage(f); setIsAboutImageRemoved(false); }}
+            removable={true}
+            onRemove={() => setIsAboutImageRemoved(true)}
           />
         </div>
       </div>

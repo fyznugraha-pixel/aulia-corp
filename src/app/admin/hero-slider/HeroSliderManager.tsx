@@ -47,12 +47,12 @@ export function HeroSliderManager({ initialSlides }: { initialSlides: HeroSlider
   };
 
   return (
-    <div className="w-full bg-white rounded border border-slate-200">
-      <div className="px-6 py-4 flex items-center justify-between border-b border-slate-200 bg-slate-50">
-        <h2 className="text-lg font-bold text-slate-800">Slider Images</h2>
+    <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+      <div className="p-5 md:p-6 border-b border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-slate-50">
+        <h2 className="text-lg md:text-xl font-bold text-slate-800">Manage Slider Images</h2>
         <button 
           onClick={() => { setEditingSlide(null); setCroppedImage(null); setIsSlideOverOpen(true); }}
-          className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors shadow-sm"
+          className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 shadow-sm transition-colors"
         >
           <Plus className="w-4 h-4" /> Add Image
         </button>
