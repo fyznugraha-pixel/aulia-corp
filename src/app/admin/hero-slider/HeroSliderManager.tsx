@@ -64,7 +64,7 @@ export function HeroSliderManager({ initialSlides }: { initialSlides: HeroSlider
             <tr>
               <th className="px-6 py-4">Image</th>
               <th className="px-6 py-4">Title (Internal)</th>
-              <th className="px-6 py-4">Order</th>
+              <th className="px-6 py-4">Urutan</th>
               <th className="px-6 py-4">Status</th>
               <th className="px-6 py-4 text-right">Actions</th>
             </tr>

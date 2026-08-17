@@ -62,7 +62,7 @@ export function VideoManager({ initialVideos }: { initialVideos: EventVideo[] })
               <th className="px-6 py-4">Status</th>
               <th className="px-6 py-4">Title</th>
               <th className="px-6 py-4">YouTube URL</th>
-              <th className="px-6 py-4">Order</th>
+              <th className="px-6 py-4">Urutan</th>
               <th className="px-6 py-4 text-right">Actions</th>
             </tr>
           </thead>
